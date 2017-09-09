@@ -2,7 +2,7 @@ package ru.spbau.svidchenko.homework0000.calculator
 
 import java.util
 
-import ru.spbau.svidchenko.homework0000.calculator.expression.operations.{Addition, Subtraction}
+import ru.spbau.svidchenko.homework0000.calculator.expression.operations._
 import ru.spbau.svidchenko.homework0000.calculator.expression.{Expression, Value}
 
 /**
@@ -24,6 +24,21 @@ object ExpressionFactory {
           throw new exceptions.WrongNumberOfArgumentsException
         }
         new Addition(arguments.get(0), arguments.get(1))
+      case "div" =>
+        if (!arguments.size().equals(2)) {
+          throw new exceptions.WrongNumberOfArgumentsException
+        }
+        new Division(arguments.get(0), arguments.get(1))
+      case "mult" =>
+        if (!arguments.size().equals(2)) {
+          throw new exceptions.WrongNumberOfArgumentsException
+        }
+        new Multiplication(arguments.get(0), arguments.get(1))
+      case "pi" =>
+        if (!arguments.size().equals(0)) {
+          throw new exceptions.WrongNumberOfArgumentsException
+        }
+        new Pi()
       case _ => throw new UnsupportedOperationException
     }
   }

@@ -10,8 +10,8 @@ import ru.spbau.svidchenko.homework0000.calculator.expression.{Expression, Value
   */
 @throws(classOf[exceptions.EmptyExpressionException])
 object ExpressionParser {
-  def parse(stringExpression: String): Expression = {
-    //ToDo: cut spaces;
+  def parse(expression: String): Expression = {
+    val stringExpression: String = expression.replaceAll(" ","")
     if (stringExpression.isEmpty) {
       throw new exceptions.EmptyExpressionException
     }
@@ -69,10 +69,11 @@ object ExpressionParser {
               if (argumentsStack.empty()) {
                 throw new exceptions.SyntaxErrorException
               }
-              val currentOperation: Expression = ExpressionFactory.operation(
+              argumentsStack.peek().add(ExpressionFactory.operation(
                 stringExpression.substring(startPos, pos),
                 new util.ArrayList[Expression]()
-              )
+              ))
+
               val arguments: util.ArrayList[Expression] = argumentsStack.pop()
               val name: String = namesStack.pop()
               val closedExpression: Expression = ExpressionFactory.operation(name, arguments)
