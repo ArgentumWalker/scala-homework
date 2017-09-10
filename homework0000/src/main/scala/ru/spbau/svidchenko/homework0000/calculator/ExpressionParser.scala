@@ -6,9 +6,17 @@ import ru.spbau.svidchenko.homework0000.calculator.exceptions.SyntaxErrorExcepti
 import ru.spbau.svidchenko.homework0000.calculator.expression.{Expression, Value}
 
 /**
+  * Parser for expressions
   * @author ArgentumWalker
   */
 object ExpressionParser {
+  /**
+    * Supports double values and operations (see ExpressionFactory for supported operation names)
+    * Values format: [-][0-9]+\(.[0-9]+\)?
+    * Operation with arguments format: name\(argument(, argument)+\)
+    * Operation without arguments format: [name]\(()\)?
+    * @return parsed expression
+    */
   def parse(expression: String): Expression = {
     val stringExpression: String = expression.replaceAll(" ","")
     if (stringExpression.isEmpty) {

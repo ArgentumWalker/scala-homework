@@ -12,6 +12,15 @@ object ExpressionFactory {
 
   def value(value: Double): Value = new Value(value)
 
+  /**
+    * Supported names:
+    *   add - Addition. Arity = 2
+    *   sub - Subtraction. Arity = 2
+    *   mult - Multiplication. Arity = 2
+    *   div - Division. Arity = 2
+    *   pi - Pi constant. Arity = 0
+    * @return operation with such name applied to arguments
+    */
   def operation(name: String, arguments: util.ArrayList[Expression]): Expression = {
     name.toLowerCase match {
       case "sub" =>
