@@ -12,7 +12,8 @@ import scala.concurrent.duration.DurationInt
 import scala.util.Success
 
 /**
-  * Created by ArgentumWalker on 23.09.2017.
+  * Удобный интерфейс для общения с БД. (Но, на самом деле, он почти не используется)
+  * @author ArgentumWalker
   */
 class DbController(
                   answers: ActorRef

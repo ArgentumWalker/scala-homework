@@ -7,7 +7,8 @@ import info.mukel.telegrambot4s.api.{Polling, TelegramBot}
 import scala.collection.mutable
 
 /**
-  * Created by ArgentumWalker on 23.09.2017.
+  * Телеграм бот
+  * @author ArgentumWalker
   */
 
 class AskActor(bot: Telegram) extends Actor {

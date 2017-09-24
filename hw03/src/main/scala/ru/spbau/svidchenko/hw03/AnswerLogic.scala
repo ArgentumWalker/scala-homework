@@ -9,7 +9,8 @@ import ru.spbau.svidchenko.hw03.model.entity.AnswerModel
 import scala.collection.mutable.ArrayBuffer
 
 /**
-  * Created by ArgentumWalker on 23.09.2017.
+  * Логика выбора ответа на реплику
+  * @author ArgentumWalker
   */
 class AnswerLogic(
                  val dbController: DbController,

@@ -6,7 +6,8 @@ import ru.spbau.svidchenko.hw03.model.entity.{AnswerModel, PhraseModel}
 import scala.collection.mutable
 
 /**
-  * Created by ArgentumWalker on 23.09.2017.
+  * База данных для пула ответов.
+  * @author ArgentumWalker
   */
 class AnswersActor extends PersistentActor {
   val answers: mutable.MultiMap[Long, AnswerModel] =

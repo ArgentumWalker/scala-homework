@@ -3,7 +3,8 @@ package ru.spbau.svidchenko.hw03.model.entity
 import scala.collection.mutable
 
 /**
-  * Created by ArgentumWalker on 23.09.2017.
+  * Модель фразы. В данной реализации - просто набор слов с возможностью посчитать совподение с другой моделью.
+  * @author ArgentumWalker
   */
 class PhraseModel(val wordValues : mutable.Set[Long]) extends Serializable {
   def worth(phraseModel: PhraseModel): Long = {
@@ -13,4 +14,8 @@ class PhraseModel(val wordValues : mutable.Set[Long]) extends Serializable {
   }
 }
 
+/**
+  * Модель ответа. В данной реализации - ответ и модель фразы-запроса
+  * @author ArgentumWalker
+  */
 class AnswerModel(val answer: String, val phraseModel: PhraseModel) extends Serializable

@@ -5,7 +5,8 @@ import akka.persistence.PersistentActor
 import scala.collection.mutable
 
 /**
-  * Created by ArgentumWalker on 23.09.2017.
+  * База данных для словаря синонимов
+  * @author ArgentumWalker
   */
 class VocabularyActor extends PersistentActor  {
   val vocabulary: mutable.HashMap[String, Long] = new mutable.HashMap[String, Long]

@@ -22,7 +22,8 @@ import scala.concurrent.{Await, Future, Promise}
 import scala.io.Source
 
 /**
-  * Created by ArgentumWalker on 23.09.2017.
+  * Инициализатор баз и фабрика для model.entity
+  * @author ArgentumWalker
   */
 class ModelBuilder(answers: ActorRef, vocabulary: ActorRef) {
   private val russian: RussianStemmer = new RussianStemmer

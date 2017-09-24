@@ -6,7 +6,8 @@ import ru.spbau.svidchenko.hw03.model.builder.ModelBuilder
 import ru.spbau.svidchenko.hw03.model.{AnswersActor, VocabularyActor}
 
 /**
-  * Created by ArgentumWalker on 23.09.2017.
+  * Простой бот-болталка, который пытается поддерживать диалог
+  * @author ArgentumWalker
   */
 object Main extends App{
   //databases
