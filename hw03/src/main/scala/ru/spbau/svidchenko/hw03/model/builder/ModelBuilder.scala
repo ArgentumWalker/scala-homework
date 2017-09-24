@@ -36,12 +36,12 @@ class ModelBuilder(answers: ActorRef, vocabulary: ActorRef) {
       russian.stem()
       val rootWord = russian.getCurrent
 
-      implicit val timeout: Timeout = Timeout(3.minute)
+      implicit val timeout: Timeout = Timeout(10.minute)
       implicit val ec = global
       futuresToAwait += (vocabulary ? new GetId(rootWord))
     }
     for (future <- futuresToAwait) {
-      modelSet += Await.result(future, 2.minute).asInstanceOf[Long]
+      modelSet += Await.result(future, 10.minute).asInstanceOf[Long]
     }
     new PhraseModel(modelSet)
   }

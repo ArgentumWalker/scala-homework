@@ -31,14 +31,11 @@ class AnswerLogic(
       if (bestWorth < currentWorth) {
         bestMatches.clear()
         bestWorth = currentWorth
-        System.out.println("----------new best worth")
       }
       if (bestWorth == currentWorth) {
         bestMatches += answer
-        System.out.println(answer.answer)
       }
     }
-    System.out.println("End")
     bestMatches(random.nextInt(bestMatches.size)).answer
   }
 }
