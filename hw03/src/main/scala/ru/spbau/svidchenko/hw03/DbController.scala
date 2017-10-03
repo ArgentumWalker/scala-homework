@@ -12,12 +12,9 @@ import scala.concurrent.duration.DurationInt
 import scala.util.Success
 
 /**
-  * Удобный интерфейс для общения с БД. (Но, на самом деле, он почти не используется)
   * @author ArgentumWalker
   */
-class DbController(
-                  answers: ActorRef
-                  ) {
+class DbController(answers: ActorRef) {
   def getPossibleAnswers(phraseModel: PhraseModel): mutable.Set[AnswerModel] = {
     var result: mutable.Set[AnswerModel] = mutable.HashSet.empty[AnswerModel]
     implicit val timeout: Timeout = Timeout(1.minute)

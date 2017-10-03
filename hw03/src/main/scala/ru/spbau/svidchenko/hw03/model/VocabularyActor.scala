@@ -5,10 +5,11 @@ import akka.persistence.PersistentActor
 import scala.collection.mutable
 
 /**
-  * База данных для словаря синонимов
+  * Database for synonyms
   * @author ArgentumWalker
   */
-class VocabularyActor extends PersistentActor  {
+class VocabularyActor extends PersistentActor {
+
   val vocabulary: mutable.HashMap[String, Long] = new mutable.HashMap[String, Long]
 
   def receiveAdd(addRequest: NewWord): Unit = {

@@ -6,10 +6,11 @@ import ru.spbau.svidchenko.hw03.model.builder.ModelBuilder
 import ru.spbau.svidchenko.hw03.model.{AnswersActor, VocabularyActor}
 
 /**
-  * Простой бот-болталка, который пытается поддерживать диалог
+  * Simple speaker-bot
   * @author ArgentumWalker
   */
 object Main extends App{
+
   //databases
   val system = ActorSystem()
   val answers = system.actorOf(Props(classOf[AnswersActor]))

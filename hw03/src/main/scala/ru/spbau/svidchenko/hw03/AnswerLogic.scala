@@ -9,13 +9,13 @@ import ru.spbau.svidchenko.hw03.model.entity.AnswerModel
 import scala.collection.mutable.ArrayBuffer
 
 /**
-  * Логика выбора ответа на реплику
+  * Find-answer logic
   * @author ArgentumWalker
   */
 class AnswerLogic(
-                 val dbController: DbController,
-                 val modelBuilder: ModelBuilder
-                 ) {
+    val dbController: DbController,
+    val modelBuilder: ModelBuilder) {
+
   private val random: Random = new Random()
 
   def apply(message: String): String = {

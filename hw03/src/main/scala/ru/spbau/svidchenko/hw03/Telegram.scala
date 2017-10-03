@@ -7,7 +7,7 @@ import info.mukel.telegrambot4s.api.{Polling, TelegramBot}
 import scala.collection.mutable
 
 /**
-  * Телеграм бот
+  * Work with Telegram bot's API
   * @author ArgentumWalker
   */
 
@@ -18,9 +18,11 @@ class AskActor(bot: Telegram) extends Actor {
 }
 
 class Telegram (
-               val token : String,
-               val answerLogic : AnswerLogic
-               ) extends TelegramBot with Polling with Commands  {
+    val token : String,
+    val answerLogic : AnswerLogic)
+  extends TelegramBot
+  with Polling
+  with Commands {
 
   val map: mutable.HashMap[Long, String] = mutable.HashMap.empty
 

@@ -6,7 +6,7 @@ import ru.spbau.svidchenko.hw03.model.entity.{AnswerModel, PhraseModel}
 import scala.collection.mutable
 
 /**
-  * База данных для пула ответов.
+  * Database for dialog pool
   * @author ArgentumWalker
   */
 class AnswersActor extends PersistentActor {

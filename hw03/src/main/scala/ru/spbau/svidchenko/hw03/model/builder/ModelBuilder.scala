@@ -22,19 +22,24 @@ import scala.concurrent.{Await, Future, Promise}
 import scala.io.Source
 
 /**
-  * Инициализатор баз и фабрика для model.entity
+  * DB initializer and factory for model.entity
   * @author ArgentumWalker
   */
 class ModelBuilder(answers: ActorRef, vocabulary: ActorRef) {
-  private val russian: RussianStemmer = new RussianStemmer
+
+  private val russianStemmer: RussianStemmer = new RussianStemmer
+
+  def log(s: String): Unit = {
+    System.out.println(s)
+  }
 
   def buildPhraseModel(phrase: String): PhraseModel = {
     val modelSet: mutable.Set[Long] = mutable.HashSet.empty
     val futuresToAwait: ArrayBuffer[Future[Any]] = new ArrayBuffer[Future[Any]]
     for (word <- phrase.split("[^а-яА-Я0-9-]+")) {
-      russian.setCurrent(word.toLowerCase())
-      russian.stem()
-      val rootWord = russian.getCurrent
+      russianStemmer.setCurrent(word.toLowerCase())
+      russianStemmer.stem()
+      val rootWord = russianStemmer.getCurrent
 
       implicit val timeout: Timeout = Timeout(10.minute)
       implicit val ec = global
@@ -47,11 +52,11 @@ class ModelBuilder(answers: ActorRef, vocabulary: ActorRef) {
   }
 
   def init(): Unit = {
-    System.out.println("Инициализация словаря")
+    log("Vocabulary initialization")
     initVocabularyActor(new Scanner(getClass.getClassLoader.getResourceAsStream("synonyms-vocabulary-alt-2.txt")))
-    System.out.println("Инициализация пула ответов")
+    log("Dialog pool initialization")
     initAnswersActor(new Scanner(getClass.getClassLoader.getResourceAsStream("dialog-pool.txt")))
-    System.out.println("Запуск бота")
+    log("Starting bot")
   }
 
   private def initVocabularyActor(
@@ -67,9 +72,9 @@ class ModelBuilder(answers: ActorRef, vocabulary: ActorRef) {
       val newHelpers: ArrayBuffer[VocabularyHelperHolder] = ArrayBuffer.empty
 
       for (word <- synonyms) {
-        russian.setCurrent(word.toLowerCase())
-        russian.stem()
-        val rootWord: String = russian.getCurrent
+        russianStemmer.setCurrent(word.toLowerCase())
+        russianStemmer.stem()
+        val rootWord: String = russianStemmer.getCurrent
 
         if (map.contains(rootWord)) {
           if (parent == null) {
